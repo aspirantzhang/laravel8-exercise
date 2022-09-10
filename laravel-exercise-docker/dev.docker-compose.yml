@@ -1,0 +1,78 @@
+version: "3.9"
+services:
+  apache-php:
+    container_name: apache-php
+    image: apache-php
+    volumes:
+      - ../:/var/www/
+      - ../public:/var/www/html/
+      - ./php/custom_php.ini:/usr/local/etc/php/conf.d/custom_php.ini
+      - ./php/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - "E:/temp/docker/php/extension:/root/.vscode-server/extensions"
+      - "E:/temp/docker/php/extension-insiders:/root/.vscode-server-insiders/extensions"
+    ports:
+      - 30001:80
+    build: "./php"
+    networks:
+      lan:
+        ipv4_address: 172.16.1.11
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    tty: true
+    stdin_open: true
+
+  mariadb:
+    container_name: mariadb
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+      TZ: Asia/Shanghai
+    networks:
+      lan:
+        ipv4_address: 172.16.1.12
+    ports:
+      - "30002:3306"
+    volumes:
+      - E:/www/mysql/laravel8-exercise:/var/lib/mysql
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u$$MYSQL_USER",
+          "-p$$MYSQL_PASSWORD",
+        ]
+      timeout: 2s
+      retries: 3
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin:latest
+    restart: always
+    ports:
+      - 30003:80
+    environment:
+      - PMA_HOST=mariadb
+      - PMA_PORT=3306
+      - PMA_USER=user
+      - PMA_PASSWORD=pass
+    networks:
+      lan:
+        ipv4_address: 172.16.1.13
+    depends_on:
+      - mariadb
+
+networks:
+  lan:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.1.1/24
