@@ -13,6 +13,37 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $user = \App\Models\User::factory()->create();
+        $user2 = \App\Models\User::factory()->create();
+
+        $personal = \App\Models\Category::create([
+            'name' => 'Personal',
+            'slug' => 'personal',
+        ]);
+
+        $work = \App\Models\Category::create([
+            'name' => 'Work',
+            'slug' => 'work',
+        ]);
+
+        $family = \App\Models\Category::create([
+            'name' => 'Family',
+            'slug' => 'family',
+        ]);
+
+        \App\Models\Post::factory()->create([
+            'user_id' => $user->id,
+            'category' => $personal->id,
+        ]);
+
+        \App\Models\Post::factory()->create([
+            'user_id' => $user->id,
+            'category' => $work->id,
+        ]);
+
+        \App\Models\Post::factory()->create([
+            'user_id' => $user2->id,
+            'category' => $work->id,
+        ]);
     }
 }

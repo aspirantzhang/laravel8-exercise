@@ -9,3 +9,12 @@ article {
 article + article {
     border-top: 1px solid #ccc;
 }
+.meta {
+    color: #999;
+    margin-bottom: 10px;
+    font-size: 0.8em;
+}
+.excerpt {
+    font-style: italic;
+    color: #999;
+}
