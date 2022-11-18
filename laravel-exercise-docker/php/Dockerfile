@@ -55,3 +55,6 @@ RUN mkdir /usr/local/xdebug && \
     ./configure && \
     make && \
     cp modules/xdebug.so /usr/local/lib/php/extensions/no-debug-non-zts-20210902
+
+RUN git config --global http.proxy http://host.docker.internal:10809 && \
+    git config --global https.proxy http://host.docker.internal:10809
