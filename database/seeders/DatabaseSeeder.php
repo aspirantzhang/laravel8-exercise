@@ -36,12 +36,22 @@ class DatabaseSeeder extends Seeder
             'category' => $personal->id,
         ]);
 
-        \App\Models\Post::factory()->create([
+        \App\Models\Post::factory(2)->create([
+            'user_id' => $user2->id,
+            'category' => $personal->id,
+        ]);
+
+        \App\Models\Post::factory(2)->create([
+            'user_id' => $user->id,
+            'category' => $personal->id,
+        ]);
+
+        \App\Models\Post::factory(2)->create([
             'user_id' => $user->id,
             'category' => $work->id,
         ]);
 
-        \App\Models\Post::factory()->create([
+        \App\Models\Post::factory(3)->create([
             'user_id' => $user2->id,
             'category' => $work->id,
         ]);

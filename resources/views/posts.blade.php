@@ -1,22 +1,20 @@
-<x-header>
-    @foreach ($posts as $post)
-    <article>
-        <h1>
-            <a href="/posts/{{ $post->slug }}">
-            {{ $post->title }}
-            </a>
+<x-layout>
+    @include('home-header')
 
-        </h1>
-        <div class="meta">
-            By <a href="/author/{{ $post->author->id }}">{{ $post->author->name }}</a> in
-            <a href="/category/{{ $post->cate->slug }}">
-                {{ $post->cate->name }}
-            </a>
-            {{ $post->created_at }}
-        </div>
-        <div>
-            {!! $post->body !!}
-        </div>
-    </article>
-    @endforeach
-</x-header>
+    <main class="max-w-6xl m-auto mt-8">
+        @if ($posts->count())
+            <x-featured-post-card :post="$posts[0]" />
+
+            @if ($posts->count() > 1)
+                <div class="lg:grid lg:grid-cols-6 mt-8 space-y-8 lg:space-y-0">
+                    @foreach ($posts->skip(1)->take(5) as $post)
+                        <x-post-card :post="$post" class="{{ $loop->iteration < 3 ? 'col-span-3' : 'col-span-2'}}" />
+                    @endforeach
+                </div>
+            @endif
+        @else
+            <p class="text-center">No posts found.</p>
+        @endif
+
+    </main>
+</x-layout>

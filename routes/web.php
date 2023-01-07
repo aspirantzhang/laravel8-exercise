@@ -13,8 +13,9 @@ Route::get('/posts', function () {
 
     return view('posts', [
         'posts' => Post::with('cate', 'author')->get(),
+        'categories' => Category::all(),
     ]);
-});
+})->name('posts');
 
 Route::get('/posts/{post:slug}', function (Post $post) { // Elequent Post::where('slug', $post)->firstOrFail();
     return view('post', [
@@ -27,14 +28,18 @@ Route::get('/posts/{post:slug}', function (Post $post) { // Elequent Post::where
 //         'post' => Post::findOrFail($id),
 //     ]);
 // });
+
 Route::get('/category/{category:slug}', function (Category $category) {
     return view('posts', [
         'posts' => $category->posts,
+        'currentCategory' => $category,
+        'categories' => Category::all(),
     ]);
 });
 
 Route::get('/author/{author}', function (User $author) {
     return view('posts', [
         'posts' => $author->posts->load('cate'),
+        'categories' => Category::all(),
     ]);
 });
