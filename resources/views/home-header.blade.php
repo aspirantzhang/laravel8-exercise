@@ -3,14 +3,7 @@
         <h1 class="text-4xl">
             Latest <span class="text-blue-500">Lavavel From Scratch</span> News
         </h1>
-        <h2 class="inline-flex mt-2">by Aspirant Zhang <img src="/images/lary-head.svg" alt="Lary head"></h2>
-        <p class="mt-10 text-sm">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure exercitationem atque ipsum nobis,
-            voluptatum minima consequatur aut perspiciatis libero commodi amet consectetur sunt enim sed, ut
-            magnam vel architecto nisi.
-        </p>
-
-        <div class="mt-8 lg:space-x-3 space-y-3">
+        <div class="mt-4 lg:space-x-3 space-y-3">
             <div class="lg:inline-flex relative">
                 <x-dropdown>
                     <x-slot name="trigger">
@@ -30,14 +23,6 @@
                     @endforeach
                 </x-dropdown>
             </div>
-            <span class="bg-gray-100 flex lg:inline-flex items-center rounded-full relative">
-                <select class="pl-3 pr-9 py-3 bg-transparent appearance-none text-sm font-semibold flex-1">
-                    <option value="other">Other Filters</option>
-                    <option value="foo">foo</option>
-                    <option value="bar">bar</option>
-                </select>
-                <x-icon name="dropdownIcon" class="transform -rotate-90 absolute right-2 pointer-events-none" />
-            </span>
             <span class="bg-gray-100 flex lg:inline-flex items-center rounded-full relative">
                 <form action="#" class="w-full">
                     <input type="text" placeholder="Find Something..."

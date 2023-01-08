@@ -22,8 +22,8 @@
             </div>
 
         </header>
-        <div>
-            {{ $post->excerpt }}
+        <div class="space-y-3">
+            {!! $post->excerpt !!}
         </div>
         <footer class="flex justify-between items-center mt-4">
             <div class="flex text-sm items-center flex-1">

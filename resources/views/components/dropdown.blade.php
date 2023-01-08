@@ -7,8 +7,8 @@
     </div>
 
     {{-- items --}}
-    <div class="absolute w-full bg-gray-100 rounded-xl mt-2 z-50" x-show="open" x-transition.duration.400ms
-        style="display: none">
+    <div class="absolute w-full bg-gray-100 rounded-xl mt-2 z-50 max-h-40 overflow-auto" x-show="open"
+        x-transition.duration.400ms style="display: none">
         {{ $slot }}
     </div>
 </div>
