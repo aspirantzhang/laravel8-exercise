@@ -1,27 +1,14 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/posts', function () {
-    DB::listen(function ($query) {
-        logger($query->sql, $query->bindings);
-    });
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
 
-    return view('posts', [
-        'posts' => Post::with('cate', 'author')->get(),
-        'categories' => Category::all(),
-    ]);
-})->name('posts');
-
-Route::get('/posts/{post:slug}', function (Post $post) { // Elequent Post::where('slug', $post)->firstOrFail();
-    return view('post', [
-        'post' => $post,
-    ]);
-});
+Route::get('/posts/{post:slug}', [PostController::class, 'post']);
 
 // Route::get('/posts/{post}', function ($id) {
 //     return view('post', [
