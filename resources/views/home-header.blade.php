@@ -17,7 +17,7 @@
                     <x-dropdown-item href="/posts" :active="request()->routeIs('posts')">All</x-dropdown-item>
                     @foreach ($categories as $category)
                         {{-- class="{{ request()->is('/category' . $category->slug) ? 'bg-blue-500 text-white' : '' }}"> --}}
-                        <x-dropdown-item href="/category/{{ $category->slug }}" :active="request()->is('category/' . $category->slug)">
+                        <x-dropdown-item href="?category={{ $category->slug }}" :active="request()->is('category/' . $category->slug)">
                             {{ $category->name }}
                         </x-dropdown-item>
                     @endforeach
