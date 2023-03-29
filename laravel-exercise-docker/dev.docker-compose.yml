@@ -8,8 +8,8 @@ services:
       - ../public:/var/www/html/
       - ./php/custom_php.ini:/usr/local/etc/php/conf.d/custom_php.ini
       - ./php/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-      - "H:/docker/runtime/php/extension:/root/.vscode-server/extensions"
-      - "H:/docker/runtime/php/extension-insiders:/root/.vscode-server-insiders/extensions"
+      - "F:/docker/runtime/php/extension:/root/.vscode-server/extensions"
+      - "F:/docker/runtime/php/extension-insiders:/root/.vscode-server-insiders/extensions"
     ports:
       - 30001:80
     build: "./php"
