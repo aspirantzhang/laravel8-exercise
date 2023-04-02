@@ -9,7 +9,10 @@
             </div>
             <span class="bg-gray-100 flex lg:inline-flex items-center rounded-full relative">
                 <form action="#" class="w-full">
-                    <input type="text" name="search" placeholder="Find Something..."
+                    @if (request('category'))
+                        <input type="hidden" name="category" value="{{request('category')}}">
+                    @endif
+                    <input type="text" name="search" placeholder="Find Something..." value="{{request('search')}}"
                         class="text-sm bg-transparent pl-3 pr-9 py-3 placeholder-black font-semibold w-full focus-within:outline-none">
                 </form>
             </span>
