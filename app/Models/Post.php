@@ -28,6 +28,13 @@ class Post extends Model
                 fn ($query) => $query->where('slug', $category)
             );
         });
+
+        $query->when($request['author'] ?? false, function ($query, $author) {
+            $query->whereHas(
+                'author',
+                fn ($query) => $query->where('name', $author)
+            );
+        });
     }
 
     public function cate()

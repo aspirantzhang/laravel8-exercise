@@ -17,15 +17,17 @@ Route::get('/posts/{post:slug}', [PostController::class, 'post']);
 // });
 
 Route::get('/category/{category:slug}', function (Category $category) {
-    return view('posts', [
-        'posts' => $category->posts,
+    return view('posts.index', [
+        'posts' => App\Models\Post::with('cate', 'author')->whereHas('cate', function ($query) use ($category) {
+            return $query->where('categories.slug', $category->slug);
+        })->latest()->filter(request(['author']))->get(),
         'currentCategory' => $category,
         'categories' => Category::all(),
     ]);
 });
 
 Route::get('/author/{author}', function (User $author) {
-    return view('posts', [
+    return view('posts.index', [
         'posts' => $author->posts->load('cate'),
         'categories' => Category::all(),
     ]);

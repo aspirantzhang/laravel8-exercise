@@ -16,7 +16,7 @@
     <section class="px-6 py-3 lg:py-4">
         <nav class="md:flex md:justify-between md:items-center">
             <div>
-                <a href="/">
+                <a href="/posts">
                     <img src="/images/logo.svg" alt="logo" width="165" height="16">
                 </a>
             </div>

@@ -29,7 +29,10 @@
             <div class="flex text-sm items-center flex-1">
                 <img src="/images/lary-avatar.svg" alt="lara-avatar">
                 <div class="ml-3">
-                    <h5 class="font-semibold">{{ $post->author->name }}</h5>
+                    <h5 class="font-semibold">
+                        <a href="?author={{ $post->author->name }}">{{ $post->author->name }}
+                        </a>
+                    </h5>
                     <h6>Aspirant Zhang @ Laracasts</h6>
                 </div>
             </div>
