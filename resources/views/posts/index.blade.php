@@ -13,6 +13,7 @@
                     @endforeach
                 </div>
             @endif
+            {{ $posts->links() }}
         @else
             <p class="text-center">No posts found.</p>
         @endif
