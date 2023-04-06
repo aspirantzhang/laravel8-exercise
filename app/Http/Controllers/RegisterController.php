@@ -22,5 +22,9 @@ class RegisterController extends Controller
         ]);
 
         User::create($data);
+
+        session()->flash('success', 'Your Account has been created.');
+
+        return redirect('/posts');
     }
 }

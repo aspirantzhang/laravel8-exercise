@@ -54,6 +54,12 @@
         </footer>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.5/dist/cdn.min.js"></script>
     </section>
+    @if (session('success'))
+        <div x-data="{ visible: true }" x-init="setTimeout(() => visible = false, 4000)" x-show="visible"
+            class="fixed rounded-xl bottom-3 right-3 bg-blue-500 px-5 py-2 text-white">
+            {{ session()->get('success') }}
+        </div>
+    @endif
 </body>
 
 </html>
