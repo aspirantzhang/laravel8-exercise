@@ -6,22 +6,35 @@
                 @csrf
                 <div class="mb-6">
                     <label for="name" class="block mb-2 uppercase font-bold text-xs text-grey-700">Username</label>
-                    <input type="text" class="border borer-gray-400 p-2 w-full" name="name" id="name" required>
+                    <input type="text" class="border borer-gray-400 p-2 w-full" name="name" id="name"
+                        value="{{ old('name') }}" required>
+                    @error('name')
+                        <div class="text-red-300 text-xs mt-1">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-6">
                     <label for="email" class="block mb-2 uppercase font-bold text-xs text-grey-700">Email</label>
                     <input type="email" class="border borer-gray-400 p-2 w-full" name="email" id="email"
-                        required>
+                        value="{{ old('email') }}" required>
+                    @error('email')
+                        <div class="text-red-300 text-xs mt-1">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-6">
                     <label for="password" class="block mb-2 uppercase font-bold text-xs text-grey-700">password</label>
                     <input type="password" class="border borer-gray-400 p-2 w-full" name="password" id="password"
                         required>
+                    @error('password')
+                        <div class="text-red-300 text-xs mt-1">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="text-center">
                     <button type="submit"
                         class="px-5 py-2 text-white font-bold bg-blue-500 rounded-full">Submit</button>
                 </div>
+                @foreach ($errors->all() as $error)
+                    <li class="text-red-300 text-xs">{{ $error }}</li>
+                @endforeach
             </form>
 
         </div>
