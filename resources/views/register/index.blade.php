@@ -1,6 +1,6 @@
 <x-layout>
     <main class="max-w-6xl m-auto mt-8 pt-10">
-        <div class="max-w-lg mx-auto">
+        <div class="max-w-lg mx-auto bg-gray-100 px-4 py-3 rounded-xl">
             <h1 class="text-center font-bold text-lg mb-10">Register</h1>
             <form method="post" action="/register">
                 @csrf
@@ -30,7 +30,7 @@
                 </div>
                 <div class="text-center">
                     <button type="submit"
-                        class="px-5 py-2 text-white font-bold bg-blue-500 rounded-full">Submit</button>
+                        class="px-5 py-1 text-white font-bold bg-blue-500 rounded-full">Submit</button>
                 </div>
                 @foreach ($errors->all() as $error)
                     <li class="text-red-300 text-xs">{{ $error }}</li>

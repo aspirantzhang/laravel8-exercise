@@ -21,9 +21,11 @@ class RegisterController extends Controller
             'password' => ['required', 'min:6', 'max:20'],
         ]);
 
-        User::create($data);
+        $user = User::create($data);
 
         session()->flash('success', 'Your Account has been created.');
+
+        auth()->login($user);
 
         return redirect('/posts');
     }

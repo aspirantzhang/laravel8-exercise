@@ -20,8 +20,18 @@
                     <img src="/images/logo.svg" alt="logo" width="165" height="16">
                 </a>
             </div>
-            <div class="mt-8 md:mt-4">
-                <a href="#" class="text-sm font-bold uppercase">Home Page</a>
+            <div class="mt-8 md:mt-4 flex items-center">
+                @auth
+                    Welcome back! {{ auth()->user()->name }}
+                    <form action="/logout" method="post" class="ml-5">
+                        @csrf
+                        <button type="submit" class="text-blue-500">Logout</button>
+                    </form>
+                @else
+                    <a href="/register" class="text-sm font-bold uppercase">Register</a>
+                    <a href="/login" class="text-sm font-bold uppercase ml-4">Login</a>
+                @endauth
+
                 <a href="#"
                     class="bg-blue-500 ml-3 rounded-full text-sm text-white px-4 py-3 font-semibold uppercase">Subscribe
                     for Updates</a>
