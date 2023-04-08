@@ -37,4 +37,6 @@ Route::get('/author/{author}', function (User $author) {
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
-Route::post('/logout', [SessionController::class, 'destroy']);
+Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
+Route::get('/login', [SessionController::class, 'login'])->middleware('guest');
+Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
