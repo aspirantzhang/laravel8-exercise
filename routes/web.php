@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use App\Models\Category;
-use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -19,27 +19,7 @@ Route::get('/posts/{post:slug}', [PostController::class, 'post']);
 //     ]);
 // });
 
-Route::post('newsletter', function () {
-    $mailchimp = new \MailchimpMarketing\ApiClient();
-
-    $mailchimp->setConfig([
-        'apiKey' => config('services.mailchimp.key'),
-        'server' => 'us5',
-    ]);
-
-    // $response = $mailchimp->lists->getListMembersInfo('df1768c210');
-
-    try {
-        $mailchimp->lists->addListMember('df1768c210', [
-            'email_address' => request('email'),
-            'status' => 'pending',
-        ]);
-    } catch (\Exception $e) {
-        throw Illuminate\Validation\ValidationException::withMessages(['email' => 'Your email address cannot added to our newsletter']);
-    }
-
-    return redirect('/posts')->with('success', 'Your email has added to our newsletter.');
-});
+Route::post('newsletter', NewsletterController::class);
 
 Route::get('/category/{category:slug}', function (Category $category) {
     return view('posts.index', [

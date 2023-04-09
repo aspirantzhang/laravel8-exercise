@@ -31,5 +31,8 @@ return [
 
     'mailchimp' => [
         'key' => env('MAILCHIMP_APP_KEY'),
+        'list' => [
+            'subscribe' => env('MAILCHIMP_SUBCRIBE_LIST_ID'),
+        ],
     ],
 ];
