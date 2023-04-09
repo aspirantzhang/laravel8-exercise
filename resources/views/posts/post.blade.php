@@ -40,11 +40,9 @@
                 </div>
             </div>
             <div class="col-span-8 col-start-4 mt-3 space-y-4">
-                <x-post-comment />
-                <x-post-comment />
-                <x-post-comment />
-                <x-post-comment />
-                <x-post-comment />
+                @foreach ($post->comments as $comment)
+                    <x-post-comment :comment="$comment" />
+                @endforeach
             </div>
         </article>
     </main>
