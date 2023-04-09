@@ -2,7 +2,7 @@
 
 <x-panel class="bg-gray-100 flex space-x-3">
     <div class="flex-shrink-0">
-        <img src="https://i.pravatar.cc/100?u={{ $comment->id }}" alt="">
+        <img src="https://i.pravatar.cc/100?u={{ $comment->user_id }}" alt="">
     </div>
     <div class="space-y-2">
         <header>
@@ -10,7 +10,7 @@
             <p class="text-xs">
                 Posted
                 <time>
-                    {{ $comment->created_at }}
+                    {{ $comment->created_at->diffForHumans() }}
                 </time>
             </p>
         </header>
