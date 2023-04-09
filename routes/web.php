@@ -19,6 +19,24 @@ Route::get('/posts/{post:slug}', [PostController::class, 'post']);
 //     ]);
 // });
 
+Route::get('ping', function () {
+    $mailchimp = new \MailchimpMarketing\ApiClient();
+
+    $mailchimp->setConfig([
+        'apiKey' => config('services.mailchimp.key'),
+        'server' => 'us5',
+    ]);
+
+    // $response = $mailchimp->lists->getListMembersInfo('df1768c210');
+
+    $response = $mailchimp->lists->addListMember('df1768c210', [
+        'email_address' => 'test11111@qq.com',
+        'status' => 'pending',
+    ]);
+
+    ddd($response);
+});
+
 Route::get('/category/{category:slug}', function (Category $category) {
     return view('posts.index', [
         'posts' => App\Models\Post::with('cate', 'author')->whereHas('cate', function ($query) use ($category) {

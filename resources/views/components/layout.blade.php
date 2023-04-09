@@ -10,6 +10,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <body style="font-family: 'Open Sans', sans-serif;">
@@ -32,7 +37,7 @@
                     <a href="/login" class="text-sm font-bold uppercase ml-4">Login</a>
                 @endauth
 
-                <a href="#"
+                <a href="#subscribe"
                     class="bg-blue-500 ml-3 rounded-full text-sm text-white px-4 py-3 font-semibold uppercase">Subscribe
                     for Updates</a>
             </div>
@@ -40,7 +45,8 @@
 
         {{ $slot }}
 
-        <footer class="bg-gray-100 rounded-2xl px-2 py-12 border border-black-10 max-w-6xl mx-auto text-center mt-8">
+        <footer id="subscribe"
+            class="bg-gray-100 rounded-2xl px-2 py-12 border border-black-10 max-w-6xl mx-auto text-center mt-8">
             <img src="/images/lary-newsletter-icon.png" alt="lara newsletter" class="mx-auto" style="width: 175px;">
             <h4 class="text-3xl">Stay in touch with the latest posts</h4>
             <div class="text-sm">
