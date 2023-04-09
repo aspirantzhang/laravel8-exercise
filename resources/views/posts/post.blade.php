@@ -39,6 +39,20 @@
                     {!! $post->body !!}
                 </div>
             </div>
+            <div class="col-span-8 col-start-4 mt-3">
+                <x-panel>
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/60?u={{ auth()->user() }}" alt="" class="rounded-full">
+                        <span class="ml-3 font font-semibold">Want to participate?</span>
+                    </div>
+                    <textarea name="body" id="" rows="4" class="w-full mt-4 focus:outline-none focus:ring"
+                        placeholder="say something..."></textarea>
+                    <div class="flex justify-end mt-4 border-t border-gray-100 pt-3">
+                        <button
+                            class="bg-blue-500 text-white px-7 py-1 rounded-full hover:bg-blue-600 text-sm">Post</button>
+                    </div>
+                </x-panel>
+            </div>
             <div class="col-span-8 col-start-4 mt-3 space-y-4">
                 @foreach ($post->comments as $comment)
                     <x-post-comment :comment="$comment" />
