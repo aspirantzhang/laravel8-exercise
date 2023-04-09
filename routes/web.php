@@ -19,7 +19,7 @@ Route::get('/posts/{post:slug}', [PostController::class, 'post']);
 //     ]);
 // });
 
-Route::get('ping', function () {
+Route::post('newsletter', function () {
     $mailchimp = new \MailchimpMarketing\ApiClient();
 
     $mailchimp->setConfig([
@@ -29,12 +29,16 @@ Route::get('ping', function () {
 
     // $response = $mailchimp->lists->getListMembersInfo('df1768c210');
 
-    $response = $mailchimp->lists->addListMember('df1768c210', [
-        'email_address' => 'test11111@qq.com',
-        'status' => 'pending',
-    ]);
+    try {
+        $mailchimp->lists->addListMember('df1768c210', [
+            'email_address' => request('email'),
+            'status' => 'pending',
+        ]);
+    } catch (\Exception $e) {
+        throw Illuminate\Validation\ValidationException::withMessages(['email' => 'Your email address cannot added to our newsletter']);
+    }
 
-    ddd($response);
+    return redirect('/posts')->with('success', 'Your email has added to our newsletter.');
 });
 
 Route::get('/category/{category:slug}', function (Category $category) {
