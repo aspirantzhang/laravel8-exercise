@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Newsletter;
+use app\Services\BaseNewsletter;
 
 class NewsletterController extends Controller
 {
-    public function __invoke(Newsletter $newsletter)
+    public function __invoke(BaseNewsletter $newsletter)
     {
         try {
             $newsletter->subscribe(request('email'));
