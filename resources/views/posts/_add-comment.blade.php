@@ -3,7 +3,7 @@
         <form method="post" action="/posts/{{ $post->slug }}/comment">
             @csrf
             <div class="flex items-center">
-                <img src="https://i.pravatar.cc/60?u={{ auth()->user() }}" alt="" class="rounded-full">
+                <img src="https://i.pravatar.cc/60?u={{ auth()->user()->id }}" alt="" class="rounded-full">
                 <span class="ml-3 font font-semibold">Want to participate?</span>
             </div>
             <textarea name="body" id="" rows="4" class="w-full mt-4 focus:outline-none focus:ring"
