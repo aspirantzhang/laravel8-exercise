@@ -27,10 +27,19 @@
             </div>
             <div class="mt-8 md:mt-4 flex items-center">
                 @auth
-                    Welcome back! {{ auth()->user()->name }}
-                    <form action="/logout" method="post" class="ml-5">
+                    <x-dropdown>
+                        <x-slot name="trigger">
+                            Welcome back! {{ auth()->user()->name }}
+                        </x-slot>
+                        <x-dropdown-item href="/posts" class="text-center">Home</x-dropdown-item>
+                        <x-dropdown-item href="/admin/post/create" :active="request()->is('admin/post/create') ? true : false" class="text-center">Add new post
+                        </x-dropdown-item>
+                        <x-dropdown-item href="#" x-data="{}"
+                            @click.prevent="document.querySelector('#logout-form').submit()" class="text-center">
+                            Logout</x-dropdown-item>
+                    </x-dropdown>
+                    <form id="logout-form" action="/logout" method="post" class="hidden">
                         @csrf
-                        <button type="submit" class="text-blue-500">Logout</button>
                     </form>
                 @else
                     <a href="/register" class="text-sm font-bold uppercase">Register</a>

@@ -1,8 +1,8 @@
 @props(['trigger'])
 
-<div x-data="{ open: false }" @click.away="open = false">
+<div x-data="{ open: false }" @click.away="open = false" class="relative">
     {{-- trigger --}}
-    <div @click="open = !open">
+    <div @click="open = !open" class="cursor-pointer">
         {{ $trigger }}
     </div>
 
