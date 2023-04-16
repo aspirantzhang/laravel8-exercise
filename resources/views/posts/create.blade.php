@@ -2,7 +2,7 @@
     <main class="max-w-2xl m-auto mt-8 pt-10">
         <x-panel>
             <h1 class="text-center font-bold text-lg mb-10">Add New Post</h1>
-            <form method="post" action="/admin/post">
+            <form method="post" action="/admin/post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-6">
                     <label for="category" class="block mb-2 uppercase font-bold text-xs text-grey-700">Category</label>
@@ -32,6 +32,14 @@
                     <input type="text" class="border border-gray-200 p-2 w-full" name="slug" id="slug"
                         value="{{ old('slug') }}" required>
                     @error('slug')
+                        <div class="text-red-300 text-xs mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-6">
+                    <label for="thumbnail"
+                        class="block mb-2 uppercase font-bold text-xs text-grey-700">thumbnail</label>
+                    <input type="file" name="thumbnail" id="thumbnail" class="border border-gray-200 p-2 w-full">
+                    @error('thumbnail')
                         <div class="text-red-300 text-xs mt-1">{{ $message }}</div>
                     @enderror
                 </div>

@@ -3,7 +3,8 @@
 <article
     class="bg-gray-100 rounded-2xl lg:flex p-2 lg:p-6 bg-opacity-0 hover:bg-opacity-100 transition-colors duration-300 border border-black border-opacity-0 hover:border-opacity-10">
     <div class="lg:mr-6 flex-1">
-        <img src="/images/illustration-1.png" alt="illustration-1" class="rounded-2xl">
+        <img src="{{ !empty($post->thumbnail) ? asset('storage/' . $post->thumbnail) : '/images/illustration-1.png' }}"
+            alt="illustration-1" class="rounded-2xl">
     </div>
     <div class="flex flex-1 flex-col justify-between mt-5 lg:mt-0">
         <header>

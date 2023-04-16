@@ -2,7 +2,7 @@
     <main class="max-w-6xl m-auto mt-8 pt-10">
         <article class="lg:grid grid-cols-12 gap-x-10">
             <div class="col-span-3">
-                <img src="/images/illustration-1.png" alt="" class="rounded-xl">
+                <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="" class="rounded-xl">
                 <p class="text-gray-400 text-xs mt-5 text-center">
                     Published <time>{{ $post->created_at->diffForHumans() }}</time>
                 </p>

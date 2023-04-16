@@ -3,7 +3,8 @@
 <article
     {{ $attributes->merge(['class' => 'bg-gray-100 rounded-2xl p-2 lg:p-6 bg-opacity-0 hover:bg-opacity-100 transition-colors duration-300 border border-black border-opacity-0 hover:border-opacity-10']) }}>
     <div>
-        <img src="/images/illustration-3.png" alt="illustration-1" class="rounded-2xl">
+        <img src="{{ !empty($post->thumbnail) ? asset('storage/' . $post->thumbnail) : '/images/illustration-3.png' }}"
+            alt="illustration-1" class="rounded-2xl">
     </div>
     <div class="flex flex-col justify-between mt-5">
         <header>
