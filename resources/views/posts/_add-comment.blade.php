@@ -9,7 +9,7 @@
             <textarea name="body" id="" rows="4" class="w-full mt-4 focus:outline-none focus:ring"
                 placeholder="say something..."></textarea>
             <div class="flex justify-end mt-4 border-t border-gray-100 pt-3">
-                <x-submit-button>Post</x-submit-button>
+                <x-form.button>Post</x-form.button>
             </div>
         </form>
     </x-panel>
