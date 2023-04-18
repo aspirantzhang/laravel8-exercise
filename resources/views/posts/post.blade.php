@@ -29,8 +29,7 @@
                             Back to Posts
                         </a>
                         <div class="space-x-3">
-                            <a href="#"
-                                class="px-4 py-1 rounded-xl border rounded-full border-blue-300 uppercase text-blue-300 text-xs font-semibold">Techniques</a>
+                            <x-category-label :post="$post" />
                         </div>
                     </div>
                     <h1 class="text-3xl font-bold mt-3">{{ $post->title }}</h1>

@@ -32,6 +32,8 @@
                             Welcome back! {{ auth()->user()->name }}
                         </x-slot>
                         <x-dropdown-item href="/posts" class="text-center">Home</x-dropdown-item>
+                        <x-dropdown-item href="/admin/post" :active="request()->is('admin/post') ? true : false" class="text-center">Dashboard
+                        </x-dropdown-item>
                         <x-dropdown-item href="/admin/post/create" :active="request()->is('admin/post/create') ? true : false" class="text-center">Add new post
                         </x-dropdown-item>
                         <x-dropdown-item href="#" x-data="{}"
