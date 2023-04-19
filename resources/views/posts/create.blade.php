@@ -20,8 +20,8 @@
             <x-form.input name="title" type="text" />
             <x-form.input name="slug" type="text" />
             <x-form.input name="thumbnail" type="file" />
-            <x-form.textarea name="excerpt" />
-            <x-form.textarea name="body" />
+            <x-form.textarea name="excerpt">{{ old('excerpt') }}</x-form.textarea>
+            <x-form.textarea name="body">{{ old('body') }}</x-form.textarea>
 
             <div class="text-center mt-4 border-t border-gray-100 pt-3">
                 <x-form.button>Submit</x-form.button>
