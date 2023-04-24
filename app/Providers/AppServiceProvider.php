@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\User;
 use app\Services\BaseNewsletter;
 use App\Services\MailChimpNewsletter;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -45,5 +46,10 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('master', function () {
             return request()->user()?->can('master');
         });
+
+        Relation::morphMap([
+            'series' => 'App\Models\Series',
+            'collection' => 'App\Models\Collection',
+        ]);
     }
 }
